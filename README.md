@@ -35,7 +35,7 @@ Expenses by category: Visual representation through progress bars displaying the
 ![5](https://github.com/joaquinn3/ExpenseTracker/assets/162243331/60b03f9f-2dff-4d9f-9fbd-4026f9b292af)
 
 
-![Video using the web](https://www.youtube.com/watch?v=5OPFo3c3lb0&ab_channel=JoaquinSajama)
+[!Video using the web](https://www.youtube.com/watch?v=5OPFo3c3lb0&ab_channel=JoaquinSajama)
 
 # Installation:
 
