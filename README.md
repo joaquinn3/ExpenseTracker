@@ -5,8 +5,7 @@ Aplicacion web para el control de finanzas personales. Permite al usuario realiz
 
 # Características
 
-Balance general: El usuario podrá ver su balance actual.
-----------------
+<u>Balance general: El usuario podrá ver su balance actual.</u>
 
 Ingresos mensuales: Se muestra un resumen de los ingresos mensuales.
 
