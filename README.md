@@ -6,8 +6,11 @@ Aplicacion web para el control de finanzas personales. Permite al usuario realiz
 # Características
 
 Balance general: El usuario podrá ver su balance actual.
+
 Ingresos mensuales: Se muestra un resumen de los ingresos mensuales.
+
 Gastos mensuales: Se muestra un resumen de los gastos mensuales.
+
 Gastos por categoría: Representación visual por medio de barras progresivas donde se muestra el porcentaje y el monto total del gasto de cada categoría.
 
 
