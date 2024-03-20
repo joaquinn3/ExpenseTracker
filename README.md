@@ -1,20 +1,19 @@
 # Expense Tracker - ASP.NET CORE (net 8.0)
 
-Aplicacion web para el control de finanzas personales. Permite al usuario realizar un seguimiento de su balance, ingresos mensuales, gastos mensuales, crear, editar y eliminar categorías, y registrar nuevas transacciones asociadas a estas categorías.
+Web application for personal finances control. Allows user to track his balance, monthly incomes, monthly expenses, create, edit and delete categories, and register new transactions with its associated category.
+
+# Features
+
+Balance: User will be able to see his actual balance.
+
+Monthly income: Shows a summary of incomes for the last 30 days.
+
+Monthly expenses: Shows a summary of expenses for the last 30 days.
+
+Expenses by category: Visual representation through progress bars displaying the percentage and total amount of expenditure for each category.
 
 
-# Características
-
-<u>Balance general: El usuario podrá ver su balance actual.</u>
-
-Ingresos mensuales: Se muestra un resumen de los ingresos mensuales.
-
-Gastos mensuales: Se muestra un resumen de los gastos mensuales.
-
-Gastos por categoría: Representación visual por medio de barras progresivas donde se muestra el porcentaje y el monto total del gasto de cada categoría.
-
-
-# Instalación:
+# Installation:
 
 dotnet add package Microsoft.EntityFrameworkCore --version 8.0.2
 
