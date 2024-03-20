@@ -1,0 +1,65 @@
+﻿@model Transaction
+
+@{
+    ViewData["Title"] = "New Transaction";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <a asp-action="Index" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-0-hover text-dark">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
+        <h2 class="mb-3">Transaction Details</h2>
+        <div class="widget-transaction p-5 shadow">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3">
+                    <label for="Date" class="form-label custom-label">Transaction Date</label>
+                    <ejs-datepicker id="Date" ejs-for="Date" format="dd/MMM/yy" max="DateTime.Today" placeholder="Transaction date"></ejs-datepicker>
+                </div>
+                <div class="mb-3">
+                    <label for="Categories" class="form-label custom-label">Category</label>
+                    <ejs-dropdownlist id="Categories" ejs-for="CategoryId" dataSource="@ViewBag.Categories" placeholder="Select category">
+                        <e-dropdownlist-fields value="CategoryId" text="NameWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="Amount" class="form-label custom-label">Amount</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">$</span>
+                        </div>
+                        <input asp-for="Amount" id="Amount" type="number" class="form-control" placeholder="Amount" aria-describedby="basic-addon1">
+                    </div>
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label custom-label">Description</label>
+                    <ejs-textbox id="Description" ejs-for="Description" placeholder="Description"></ejs-textbox>
+                    <small class="form-text text-muted">Optional</small>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <ejs-button id="submit-transaction" type="submit" content="Save" class="btn"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h3 class="text-white">A</h3>
+        <div class="h-100 d-flex justify-content-center align-items-center">
+            <img src="~/images/transactionCreate.png" width="300" height="300">
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+

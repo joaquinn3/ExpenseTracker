@@ -1,0 +1,50 @@
+﻿@model List<Transaction>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<div id="gridContainer" style="width: 80%; height: 400px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-end mb-3">
+                <a asp-action="Create" class="btn btn-outline-dark">
+                    <i class="bi bi-file-earmark-plus"></i> New Transaction
+                </a>
+            </div>
+        </div>
+    </div>
+    <ejs-grid id="grid" dataSource="@Model" allowPaging="true" allowSorting="true" allowTextWrap="true" gridLines="None">
+        <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+        <e-grid-columns>
+            <e-grid-column field="CategoryAndIcon" headerText="Category" width="10%" textAlign="Left"></e-grid-column>
+            <e-grid-column field="Date" headerText="Date" width="10%" textAlign="Center" format="dd/MMM/yy"></e-grid-column>
+            <e-grid-column template="#Amount" headerText="Amount" width="10%" textAlign="Center" format="C2"></e-grid-column>
+            <e-grid-column field="Description" headerText="Description" width="15%" textAlign="Center"></e-grid-column>
+            <e-grid-column textAlign="Center" template="#ButtonsTemplate" width="20%"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+</div>
+
+
+
+<script id="ButtonsTemplate" type="text/x-template">
+    <a class="btn btn-warning m-2" href="/Transaction/Edit/${TransactionId}">
+        <i class="bi bi-pencil"></i> Edit
+    </a>
+        <a class="btn btn-danger" href="/Transaction/Delete/${TransactionId}">
+        <i class="bi bi-x-circle-fill"></i> Delete
+    </a>
+</script>
+
+<script id="Amount" type="text/x-template">
+    ${if(category.Type=="Income")}
+    <div class="text-success">
+        + ${AmountFormat}
+    </div>
+    ${else}
+    <div class="text-danger">
+      - ${AmountFormat}
+    </div>
+    ${/if}
+</script>

@@ -1,0 +1,60 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+<div class="row">
+    <div class="col-md-5">
+        <a asp-action="Index" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-0-hover text-dark">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
+        <h2 class="mb-3">Edit Category</h2>
+        <div class="widget p-5 shadow">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input asp-for="CategoryId" hidden />
+                <div class="mb-3">
+                    <div class="e-btn-group custom-rbt-group">
+                        <input type="radio" id="expenseRadio" name="Type" value="Expense" checked="@(Model.Type=="Expense")" />
+                        <label class="e-btn btn-expense" for="expenseRadio">Expense</label>
+
+                        <input type="radio" id="incomeRadio" name="Type" value="Income" checked="@(Model.Type=="Income")" />
+                        <label class="e-btn btn-income" for="incomeRadio">Income</label>
+                    </div>
+                </div>
+                <span asp-validation-for="Type" class="text-danger fs-6"></span>
+
+                <fieldset>
+
+                    <div class="mb-3">
+                        <ejs-textbox id="name" placeholder="Category name" ejs-for="Name"></ejs-textbox>
+                        <span asp-validation-for="Name" class="text-danger fs-6"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <ejs-textbox id="icon" placeholder="Icon [Win+Period]" ejs-for="Icon"></ejs-textbox>
+                        <span asp-validation-for="Icon" class="text-danger fs-6"></span>
+                    </div>
+                </fieldset>
+
+                <ejs-button id="submit" type="submit" content="Save"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h3 class="text-white">A</h3>
+        <div class="h-100 d-flex justify-content-center align-items-center">
+            <img src="~/images/CategoryEdit.png" width="300" height="300">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

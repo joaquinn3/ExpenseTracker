@@ -1,0 +1,128 @@
+﻿@model List<ExpenseProgress>    
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Balance Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card under-line-blue shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Balance
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.Balance</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-currency-dollar icon-width"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card under-line-green shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Earnings (Monthly)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold">@ViewBag.IncomesMonth</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-currency-dollar icon-width"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expenses (Monthly) Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card under-line-red shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Expenses (Monthly)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.ExpensesMonth</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-currency-dollar icon-width"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Expenses in categories (last 30 days)</h6>
+                </div>
+                <div class="card-body">
+                    @foreach (var transaction in Model)
+                    {
+                        <div class="d-flex justify-content-between">
+                            <h4 class="small font-weight-bold text-start">@transaction.Name <span class="float-right">@(Math.Round(transaction.Progress))%</span></h4>
+                            <h4 class="small font-weight-bold text-end">@transaction.AmountFormat</h4>
+                        </div>
+                        <div class="progress mb-4">
+                            <div class="progress-bar @GetProgressBarColor(@transaction.Progress)" role="progressbar" style="width: @Math.Round(transaction.Progress)%" aria-valuenow="@transaction.Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-category btn-icon-split mb-4">
+                <span class="icon text-white-50">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+                <span class="text text-white">New Category</span>
+            </a>
+            <div class="col-lg-6 mb-4">
+            <a asp-controller="Transaction" asp-action="Create" class="btn btn-transaction btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+                <span class="text text-white">New Transaction</span>
+            </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetProgressBarColor(float progress)
+    {
+        if (progress < 30)
+        {
+            return "bg-info";
+        }
+        else if (progress < 70)
+        {
+            return "bg-warning";
+        }
+        else
+        {
+            return "bg-danger";
+        }
+    }
+}
+
+                            
+
+        

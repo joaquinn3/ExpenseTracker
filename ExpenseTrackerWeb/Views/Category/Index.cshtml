@@ -1,0 +1,47 @@
+﻿@model List<Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+
+<div id="gridContainer" style="width: 60%; height: 400px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-end mb-3">
+                <a asp-action="Create" class="btn btn-outline-dark">
+                    <i class="bi bi-file-earmark-plus"></i> New Category
+                </a>
+            </div>
+        </div>
+    </div>
+    <ejs-grid id="grid" dataSource="@Model" allowPaging="true" allowSorting="true" gridLines="None">
+        <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+        <e-grid-columns>
+            <e-grid-column field="NameWithIcon" headerText="Name" width="10%" textAlign="Left"></e-grid-column>
+            <e-grid-column template="#TypeTemplate" headerText="Type" width="10%" textAlign="Center"></e-grid-column>
+            <e-grid-column textAlign="Center" template="#ButtonsTemplate" width="10%"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+</div>
+
+
+
+
+<script id="TypeTemplate" type="text/x-template">
+    ${if(Type=="Income")}
+        <span class="badge rounded-pill bg-success">Income</span>
+    ${else}
+        <span class="badge rounded-pill bg-danger">Expense</span>
+    ${/if}
+</script>
+
+<script id="ButtonsTemplate" type="text/x-template">
+    <a class="btn btn-warning m-2" href="/Category/Edit/${CategoryId}">
+        <i class="bi bi-pencil"></i> Edit
+    </a>
+        <a class="btn btn-danger" href="/Category/Delete/${CategoryId}">
+        <i class="bi bi-x-circle-fill"></i> Delete
+    </a>
+</script>
+
