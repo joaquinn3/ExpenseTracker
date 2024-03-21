@@ -1,6 +1,6 @@
 # Expense Tracker - ASP.NET CORE (net 8.0)
 
-Web application for personal finances control. Allows user to track his balance, monthly incomes, monthly expenses. Create, edit and delete categories, and register new transactions with it's associated category.
+Web application for personal finances control. Allows user to track his balance, monthly incomes and monthly expenses. Create, edit and delete categories, and register new transactions with it's associated category.
 
 # Features
 
